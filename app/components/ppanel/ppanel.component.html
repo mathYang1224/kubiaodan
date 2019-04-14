@@ -1,0 +1,33 @@
+<div>
+    <div class="panel">
+    	<h3>请更改题目</h3>
+    	<hr>
+    	<div>
+    		<h3>题目：</h3>
+    		<input type="text" class="form-control" [value]="qs.getQuestions()[qs.getEdit()].title" (keyup)="changeTitle($event)"/>
+
+    		<h3>类型：</h3>
+    		<select class="form-control" [value]="getType()" (change)="changeType($event)">
+    			<option value="0">单选题</option>
+    			<option value="1">多选题</option>
+    			<option value="2">下拉选择题</option>
+    			<option value="3">单行文本题</option>
+    			<option value="4">多行文本题</option>
+    		</select>
+
+    		<h3>选项：</h3>
+
+			<div>
+				<p *ngFor="let option of qs.getQuestions()[qs.getEdit()].options; trackBy:index; let oidx = index;">
+					<my-option [option]="option" [oidx]="oidx" [qs]="qs" ></my-option>
+				</p>
+
+				<p>增加选项：
+					<input type="text" class="form-control" [(ngModel)]="txt"/>
+					<input type="button" class="btn btn-success btn-sm" value="确认增加" (click)="add()"/>
+				</p>
+			</div>
+			
+    	</div>
+    </div>
+</div>

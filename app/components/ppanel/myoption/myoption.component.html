@@ -1,0 +1,9 @@
+<div>
+    <span *ngIf="!isedit">
+        {{option}}
+        <b class="glyphicon glyphicon-pencil" (click)="edit()"></b>
+        <b class="glyphicon glyphicon-remove" (click)="del()"></b>
+        <b class="glyphicon glyphicon-sort" (click)="del()"></b>
+    </span>
+    <input type="text" class="form-control" [value]="option" *ngIf="isedit" (blur)="changeoption($event)">
+</div>

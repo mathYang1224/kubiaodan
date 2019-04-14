@@ -1,0 +1,44 @@
+<div>
+	<h1>{{title}} <span class="glyphicon glyphicon-pencil editbtn" (click)="edit('title')"></span></h1>
+    <hr>
+
+    {{questions | json}}
+    <div *ngFor="let q of questions ; let index = index;" [class]="setClass(index)" style="padding:0 10px 10px;">
+        
+        <!-- 单选题 -->
+        <div class="q" *ngIf="q.type==0">
+            <h3><span class="xing" *ngIf="q.isrequired">*</span>{{index + 1}}. {{q.title}} <span class="glyphicon glyphicon-pencil editbtn" (click)="edit(index)"></span></h3>
+            <p *ngFor="let x of q.options"><label><input type="radio"  name="q{{index + 1}}"/>{{x}}</label></p>
+           
+        </div>
+
+        <!-- 副选题 -->
+        <div class="q"  *ngIf="q.type==1">
+            <h3><span class="xing" *ngIf="q.isrequired">*</span>{{index + 1}}. {{q.title}} <span class="glyphicon glyphicon-pencil editbtn" (click)="edit(index)"></span></h3>
+            <p *ngFor="let x of q.options"><label><input type="checkbox"  name="q{{index + 1}}"/>{{x}}</label></p>
+        </div>
+
+        <!-- 下拉选择题 -->
+        <div class="q"  *ngIf="q.type==2">
+            <h3><span class="xing" *ngIf="q.isrequired">*</span>{{index + 1}}. {{q.title}} <span class="glyphicon glyphicon-pencil editbtn" (click)="edit(index)"></span></h3>
+            <select style="width:400px;" class="form-control">
+                <option *ngFor="let x of q.options">{{x}}</option>
+                
+            </select>
+        </div>
+
+
+        <!-- 单行文本 -->
+        <div class="q"  *ngIf="q.type==3">
+            <h3><span class="xing" *ngIf="q.isrequired">*</span>{{index + 1}}. {{q.title}} <span class="glyphicon glyphicon-pencil editbtn" (click)="edit(index)"></span></h3>
+            <input type="text" class="form-control" style="width:400px;"/>
+        </div>
+        
+        
+        <!-- 多行文本 -->
+        <div class="q"  *ngIf="q.type==4">
+            <h3><span class="xing" *ngIf="q.isrequired">*</span>{{index + 1}}. {{q.title}} <span class="glyphicon glyphicon-pencil editbtn" (click)="edit(index)"></span></h3>
+            <textarea class="form-control" style="width:400px;height:100px;"></textarea>
+        </div>
+    </div>
+</div>

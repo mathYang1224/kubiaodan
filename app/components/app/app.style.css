@@ -1,0 +1,9 @@
+header{
+	width:100%;
+	height:60px;
+	background-color: #eee;
+} 
+.propertypanel{
+	box-shadow: -1px 1px 4px black;
+	height:100%;
+}
